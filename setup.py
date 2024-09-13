@@ -21,7 +21,7 @@ setup(
     include_package_data=True,
     python_requires=">=3",
     description="robosuite mengerie: collection of robot models for robosuite usage.",
-    author="Yuke Zhu",
+    author="Yifeng Zhu",
     url="https://github.com/ARISE-Initiative/robosuite_menagerie",
     author_email="yifeng.zhu@utexas.edu",
     version="1.0.0",
