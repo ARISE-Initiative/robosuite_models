@@ -89,6 +89,21 @@ class Kinova3Omron(Kinova3):
     @property
     def default_arms(self):
         return {"right": "Kinova3"}
+
+    
+@register_robot_class("WheeledRobot")
+class SawyerOmron(Kinova3):
+    """
+    Variant of Panda robot with mobile base. Currently serves as placeholder class.
+    """
+
+    @property
+    def default_base(self):
+        return "OmronMobileBase"
+
+    @property
+    def default_arms(self):
+        return {"right": "Sawyer"}
     
 @register_robot_class("LeggedRobot")
 class GR1SchunkSVHArmsOnly(GR1ArmsOnly):

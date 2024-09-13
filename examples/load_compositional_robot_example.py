@@ -29,6 +29,11 @@ from robosuite.robots import register_robot_class
 
 import robosuite_menagerie
 
+"""
+Here are two examples to define your own composition of robots. This is useful if you want to define robots in your own project codebase and do not mess up with the robosuite codebase. 
+
+For more examples, see robosuite_menagerie/robosuite/compositional.py
+"""
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):
     """
@@ -42,23 +47,9 @@ class UR5eOmron(UR5e):
     @property
     def default_arms(self):
         return {"right": "UR5e"}
-    
-@register_robot_class("WheeledRobot")
-class Kinova3Omron(Kinova3):
-    """
-    Variant of Panda robot with mobile base. Currently serves as placeholder class.
-    """
 
-    @property
-    def default_base(self):
-        return "OmronMobileBase"
-
-    @property
-    def default_arms(self):
-        return {"right": "Kinova3"}
-    
 @register_robot_class("LeggedRobot")
-class GR1SchunkSVHArmsOnly(GR1ArmsOnly):
+class GR1SchunkSVHFloatingBody(GR1FloatingBody):
     """
     Variant of Panda robot with mobile base. Currently serves as placeholder class.
     """
