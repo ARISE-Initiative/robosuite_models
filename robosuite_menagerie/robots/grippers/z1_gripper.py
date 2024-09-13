@@ -1,11 +1,11 @@
 import numpy as np
 
-from robosuite.models.grippers import register_eef
+from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_menagerie import menagerie_path_completion
 
-@register_eef
+@register_gripper
 class Z1Gripper(GripperModel):
     """
     Gripper for Franka's Panda (has two fingers).
@@ -14,7 +14,7 @@ class Z1Gripper(GripperModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("end_effectors/z1_gripper.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("grippers/z1_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         return action

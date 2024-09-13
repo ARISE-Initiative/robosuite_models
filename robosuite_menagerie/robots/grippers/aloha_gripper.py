@@ -1,42 +1,46 @@
 """
-6-DoF gripper with its open/close variant
+Gripper with two fingers for Rethink Robots.
 """
 import numpy as np
 
-from robosuite.models.grippers import register_eef
+from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_menagerie import menagerie_path_completion
 
-@register_eef
-class PR2Gripper(GripperModel):
+@register_gripper
+class AlohaGripperBase(GripperModel):
     """
-    4 DoF PR2 Gripper.
+    Gripper with long two-fingered parallel jaw.
 
     Args:
         idn (int or str): Number or some other unique identification string for this gripper instance
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("end_effectors/pr2_gripper.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("grippers/aloha_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         return action
 
     @property
     def init_qpos(self):
-        return np.array([0.548, 0.0, 0.548, 0.0])
+        return np.array([0.041, 0.041])
 
     @property
     def _important_geoms(self):
         return {
-            "left_finger": [
-                "gripper_l_finger_link_collision",
-            ],
-            "right_finger": ["gripper_r_finger_link_collision"],
-            "left_fingerpad": ["gripper_l_finger_tip_link_collision"],
-            "right_fingerpad": ["gripper_r_finger_tip_link_collision"],
+            "left_finger": ["left_finger_g0", "left_finger_g1", "left_finger_g2", "left_finger_g3"],
+            "right_finger": ["right_finger_g0", "right_finger_g1", "right_finger_g2", "right_finger_g3"],
+            "left_fingerpad": ["left_finger_g4"],
+            "right_fingerpad": ["right_finger_g4"],
         }
+
+
+class AlohaGripper(AlohaGripperBase):
+    """
+    Modifies two finger base to only take one action.
+    """
 
     def format_action(self, action):
         """
@@ -51,13 +55,13 @@ class PR2Gripper(GripperModel):
         """
         assert len(action) == 1
         self.current_action = np.clip(
-            self.current_action * np.array([1.0, 1.0, 1.0, 1.0]) - self.speed * np.sign(action), -1.0, 1.0
+            self.current_action + np.array([-1.0, -1.0]) * self.speed * np.sign(action), -1.0, 1.0
         )
         return self.current_action
 
     @property
     def speed(self):
-        return 0.10
+        return 0.2
 
     @property
     def dof(self):

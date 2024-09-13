@@ -1,11 +1,11 @@
 import numpy as np
 
-from robosuite.models.grippers import register_eef
+from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_menagerie import menagerie_path_completion
 
-@register_eef
+@register_gripper
 class UMIGripper(GripperModel):
     """
     UMIGripper for the Arx5 arm
@@ -14,7 +14,7 @@ class UMIGripper(GripperModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("end_effectors/umi_gripper.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("grippers/umi_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         assert len(action) == self.dof

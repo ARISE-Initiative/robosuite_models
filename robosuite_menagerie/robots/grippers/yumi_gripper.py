@@ -3,12 +3,12 @@ Dexterous hands for GR1 robot.
 """
 import numpy as np
 
-from robosuite.models.grippers import register_eef
+from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_menagerie import menagerie_path_completion
 
-@register_eef
+@register_gripper
 class YumiRightGripper(GripperModel):
     """
     Right gripper of Yumi Robot.
@@ -18,7 +18,7 @@ class YumiRightGripper(GripperModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("end_effectors/yumi_right_gripper.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("grippers/yumi_right_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         self.current_action = np.clip(
@@ -38,7 +38,7 @@ class YumiRightGripper(GripperModel):
     def dof(self):
         return 1
 
-@register_eef
+@register_gripper
 class YumiLeftGripper(GripperModel):
     """
     Left gripper of Yumi Robot.
@@ -48,7 +48,7 @@ class YumiLeftGripper(GripperModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("end_effectors/yumi_left_gripper.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("grippers/yumi_left_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         assert len(action) == self.dof
