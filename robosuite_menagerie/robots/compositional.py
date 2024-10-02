@@ -46,7 +46,7 @@ class B1Z1Floating(B1Z1):
 
     @property
     def default_base(self):
-        return "B1Floating"
+        return "FloatingLeggedBase"
 
 @register_robot_class("LeggedRobot")
 class Go2Arx5(Arx5):
