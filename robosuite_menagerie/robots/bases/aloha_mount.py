@@ -18,7 +18,7 @@ class AlohaMount(MountModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("mounts/aloha_mount.xml"), idn=idn)
+        super().__init__(menagerie_path_completion("bases/aloha_mount.xml"), idn=idn)
 
     @property
     def top_offset(self):

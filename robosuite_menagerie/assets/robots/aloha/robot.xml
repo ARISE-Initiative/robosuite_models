@@ -83,6 +83,7 @@
 		<camera name="collaborator_pov" pos="0 1.5 0.8" xyaxes="-1 0 0 0 -0.2 .8" />	 -->
 		<!-- Right arm -->
 		<body name="right_arm_mount" pos="-0.469 -0.019 0.0">
+			<site name="right_center" pos="0 0 0" size="0.01" rgba="1 0.3 0.3 1" group="2"/>
 			<inertial pos="-0.0534774 -0.000562575 0.0205961" quat="-0.00292324 0.712517 0.00480387 0.701633" mass="3" diaginertia="0.0071633 0.00602451 0.00169819" />
 			<geom quat="1 0 0 1" class="visual" mesh="vx300s_1_base" />
 			<geom quat="1 0 0 1" mesh="vx300s_1_base" class="collision" />
@@ -129,6 +130,7 @@
 
 		<!-- Left arm -->
 		<body name="left_arm_mount" pos="0.469 -0.019 0.0" quat="0 0 0 1">
+			<site name="left_center" pos="0 0 0" size="0.01" rgba="1 0.3 0.3 1" group="2"/>
 			<inertial pos="-0.0534774 -0.000562575 0.0205961" quat="-0.00292324 0.712517 0.00480387 0.701633" mass="3" diaginertia="0.0071633 0.00602451 0.00169819" />
 			<geom quat="1 0 0 1" class="visual" mesh="vx300s_1_base" />
 			<geom quat="1 0 0 1" mesh="vx300s_1_base" class="collision" />
