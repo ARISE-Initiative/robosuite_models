@@ -61,6 +61,14 @@ class Go2Arx5(Arx5):
     @property
     def default_arms(self):
         return {"right": "Arx5"}
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.5, -0.1, 0.9),
+            "empty": (-0.6, 0, 0.9),
+            "table": lambda table_length: (-0.55 - table_length / 2, 0.9, 0.9),
+        }
 
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):

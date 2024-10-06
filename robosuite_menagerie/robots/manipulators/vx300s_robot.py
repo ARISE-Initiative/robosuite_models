@@ -64,9 +64,9 @@ class VX300S(ManipulatorModel):
     @property
     def base_xpos_offset(self):
         return {
-            "bins": (0.0, -0.1, 0),
+            "bins": (-0.5, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.18 - table_length / 2, 0, 0),
+            "table": lambda table_length: (-0.22 - table_length / 2, 0, 0),
         }
 
     @property
