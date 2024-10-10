@@ -115,6 +115,14 @@ class H1FixedLowerBody(H1):
     @property
     def default_base(self):
         return "NoActuationBase"
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.5, -0.1, -0.05),
+            "empty": (-0.29, 0, -0.05),
+            "table": lambda table_length: (-0.26 - table_length / 2, 0, -0.05),
+        }
 
 @register_robot_class("LeggedRobot")
 class H1FloatingBody(H1):
@@ -141,6 +149,15 @@ class H1FloatingBody(H1):
     @property
     def default_base(self):
         return "FloatingLeggedBase"
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.5, -0.1, -0.05),
+            "empty": (-0.29, 0, -0.05),
+            "table": lambda table_length: (-0.26 - table_length / 2, 0, -0.05),
+        }
+    
 
 @register_robot_class("LeggedRobot")
 class H1ArmsOnly(H1):
@@ -165,3 +182,11 @@ class H1ArmsOnly(H1):
         """
         init_qpos = np.array([0.0] * 8)
         return init_qpos
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.5, -0.1, -0.05),
+            "empty": (-0.29, 0, -0.05),
+            "table": lambda table_length: (-0.26 - table_length / 2, 0, -0.05),
+        }
