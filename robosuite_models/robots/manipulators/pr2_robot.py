@@ -60,31 +60,31 @@ class PR2(ManipulatorModel):
         # Arms half extended
         return np.array(
             [
-                0,
-                0.565096,
-                -0.425,
-                -0.524,
-                -3.19,
-                -1.51,
-                0,
-                -0.545,
-                -0.534,
-                0.425,
-                -0.447,
-                3.05,
-                -1.57,
                 0.0,
-                -0.545,
-                -0.534,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                -1,
+                0,
+                0,
+                0
             ]
         )
 
     @property
     def base_xpos_offset(self):
         return {
-            "bins": (-0.5, -0.1, 0),
+            "bins": (-0.7, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.7 - table_length / 2, 0, 0),
+            "table": lambda table_length: (-0.7 - table_length / 2, 0, -0.05),
         }
 
     @property

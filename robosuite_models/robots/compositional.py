@@ -33,8 +33,8 @@ class B1Z1(Z1):
     @property
     def base_xpos_offset(self):
         return {
-            "bins": (-0.5, -0.1, 0.65),
-            "empty": (-0.6, 0, 0.65),
+            "bins": (-0.8, -0.1, 0.65),
+            "empty": (-0.8, 0, 0.65),
             "table": lambda table_length: (-0.55 - table_length / 2, 0.9, 0.65),
         }
 
@@ -61,6 +61,14 @@ class Go2Arx5(Arx5):
     @property
     def default_arms(self):
         return {"right": "Arx5"}
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.55, -0.1, 0.9),
+            "empty": (-0.6, 0, 0.9),
+            "table": lambda table_length: (-0.55 - table_length / 2, 0.9, 0.9),
+        }
 
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):
@@ -89,10 +97,17 @@ class Kinova3Omron(Kinova3):
     @property
     def default_arms(self):
         return {"right": "Kinova3"}
-
     
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.6, -0.1, 0),
+            "empty": (-0.6, 0, 0),
+            "table": lambda table_length: (-0.16 - table_length / 2, 0, 0),
+        }
+
 @register_robot_class("WheeledRobot")
-class SawyerOmron(Kinova3):
+class SawyerOmron(Sawyer):
     """
     Variant of Panda robot with mobile base. Currently serves as placeholder class.
     """
@@ -104,6 +119,14 @@ class SawyerOmron(Kinova3):
     @property
     def default_arms(self):
         return {"right": "Sawyer"}
+    
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.6, -0.1, 0),
+            "empty": (-0.6, 0, 0),
+            "table": lambda table_length: (-0.16 - table_length / 2, 0, 0),
+        }
     
 @register_robot_class("LeggedRobot")
 class GR1SchunkSVHArmsOnly(GR1ArmsOnly):
