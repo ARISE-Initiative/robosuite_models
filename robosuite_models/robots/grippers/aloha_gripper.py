@@ -36,7 +36,7 @@ class AlohaGripperBase(GripperModel):
             "right_fingerpad": ["right_finger_g4"],
         }
 
-
+@register_gripper
 class AlohaGripper(AlohaGripperBase):
     """
     Modifies two finger base to only take one action.
