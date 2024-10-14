@@ -3,10 +3,10 @@ import numpy as np
 from robosuite.models.bases import register_base
 from robosuite.models.bases.leg_base_model import LegBaseModel
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_base
-class B1(LegBaseModel):
+class Go2(LegBaseModel):
     """
     Rethink's Generic Mount (Officially used on Baxter).
 
@@ -15,7 +15,7 @@ class B1(LegBaseModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("robots/b1/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/go2/robot.xml"), idn=idn)
 
     @property
     def top_offset(self):
@@ -30,7 +30,7 @@ class B1(LegBaseModel):
         return np.array([0.0, 0.9, -1.8] * 4)
 
 
-class B1Floating(LegBaseModel):
+class Go2Floating(LegBaseModel):
     """
     Rethink's Generic Mount (Officially used on Baxter).
 
@@ -39,7 +39,7 @@ class B1Floating(LegBaseModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(xml_path_completion("robots/b1/robot.xml"), idn=idn)
+        super().__init__(xml_path_completion("robots/go2/robot.xml"), idn=idn)
 
         self._remove_joint_actuation("leg")
         self._remove_free_joint()
@@ -56,4 +56,4 @@ class B1Floating(LegBaseModel):
 
     @property
     def init_qpos(self):
-        return np.array([0.0, 0.0, 0.0])
+        return np.array([0.0, 0.9, -1.8] * 4)

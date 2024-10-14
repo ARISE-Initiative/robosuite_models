@@ -4,12 +4,12 @@ from robosuite.models.robots.manipulators.legged_manipulator_model import Legged
 from robosuite.utils.mjcf_utils import find_parent, xml_path_completion
 from robosuite.robots import register_robot_class
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_robot_class("LeggedRobot")
-class H1(LeggedManipulatorModel):
+class G1(LeggedManipulatorModel):
     """
-    Tiago is a mobile manipulator robot created by PAL Robotics.
+    G1 is a humanoid robot developed by Unitree.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance
@@ -18,7 +18,7 @@ class H1(LeggedManipulatorModel):
     arms = ["right", "left"]
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("robots/h1/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/g1/robot.xml"), idn=idn)
 
     @property
     def default_base(self):
@@ -33,7 +33,7 @@ class H1(LeggedManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific gripper names
         """
-        return {"right": "Robotiq85Gripper", "left": "Robotiq85Gripper"}
+        return {"right": "G1ThreeFingerRightGripper", "left": "G1ThreeFingerLeftGripper"}
 
     @property
     def default_controller_config(self):
@@ -44,7 +44,7 @@ class H1(LeggedManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific default controller config names
         """
-        return {"right": "default_h1", "left": "default_h1"}
+        return {"right": "default_g1", "left": "default_g1"}
 
     @property
     def init_qpos(self):
@@ -56,7 +56,7 @@ class H1(LeggedManipulatorModel):
         Returns:
             np.array: default initial qpos for the right, left arms
         """
-        init_qpos = np.array([0.0] * 19)
+        init_qpos = np.array([0.0] * 23)
         return init_qpos
 
     @property
@@ -88,10 +88,10 @@ class H1(LeggedManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific eef names
         """
-        return {"right": "right_hand", "left": "left_hand"}
+        return {"right": "right_eef", "left": "left_eef"}
 
 @register_robot_class("LeggedRobot")
-class H1FixedLowerBody(H1):
+class G1FixedLowerBody(G1):
     def __init__(self, idn=0):
         super().__init__(idn=idn)
 
@@ -109,7 +109,7 @@ class H1FixedLowerBody(H1):
         Returns:
             np.array: default initial qpos for the right, left arms
         """
-        init_qpos = np.array([0.0] * 9)
+        init_qpos = np.array([0.0] * 11)
         return init_qpos
 
     @property
@@ -117,7 +117,7 @@ class H1FixedLowerBody(H1):
         return "NoActuationBase"
 
 @register_robot_class("LeggedRobot")
-class H1FloatingBody(H1):
+class G1FloatingBody(G1):
     def __init__(self, idn=0):
         super().__init__(idn=idn)
 
@@ -135,15 +135,27 @@ class H1FloatingBody(H1):
         Returns:
             np.array: default initial qpos for the right, left arms
         """
-        init_qpos = np.array([0.0] * 9)
+        init_qpos = np.array([0.0] * 11)
+        right_arm_init = np.array([0.0, -0.2, -0.55, 1.1, -0.314])
+        left_arm_init = np.array([0.0, 0.2, 0.144, 1.1, 0.314])
+        init_qpos[1:6] = right_arm_init
+        init_qpos[6:11] = left_arm_init
         return init_qpos
 
     @property
     def default_base(self):
         return "FloatingLeggedBase"
 
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.5, -0.1, 0.0),
+            "empty": (-0.29, 0, 0.0),
+            "table": lambda table_length: (-0.26 - table_length / 2, 0, 0.0),
+        }
+
 @register_robot_class("LeggedRobot")
-class H1ArmsOnly(H1):
+class G1ArmsOnly(G1):
     def __init__(self, idn=0):
         super().__init__(idn=idn)
 
@@ -163,5 +175,9 @@ class H1ArmsOnly(H1):
         Returns:
             np.array: default initial qpos for the right, left arms
         """
-        init_qpos = np.array([0.0] * 8)
+        init_qpos = np.array([0.0] * 10)
+        right_arm_init = np.array([0.0, -0.2, -0.55, 1.1, -0.314])
+        left_arm_init = np.array([0.0, 0.2, 0.144, 1.1, 0.314])
+        init_qpos[0:5] = right_arm_init
+        init_qpos[5:10] = left_arm_init
         return init_qpos

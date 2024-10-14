@@ -1,28 +1,25 @@
 import numpy as np
 
 from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
-from robosuite.utils.mjcf_utils import xml_path_completion
 from robosuite.robots import register_robot_class
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
-@register_robot_class("WheeledRobot")
-class PR2(ManipulatorModel):
+@register_robot_class("FixedBaseRobot")
+class Aloha(ManipulatorModel):
     """
-    PR2 is the lengendary mobile manipulator robot that is no longer manufactured :(.
+    Baxter is a hunky bimanual robot designed by Rethink Robotics.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance
     """
 
-    arms = ["right", "left"]
-
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("robots/pr2/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/aloha/robot.xml"), idn=idn)
 
     @property
     def default_base(self):
-        return "NullMobileBase"
+        return "AlohaMount"
 
     @property
     def default_gripper(self):
@@ -33,7 +30,8 @@ class PR2(ManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific gripper names
         """
-        return {"right": "PR2Gripper", "left": "PR2Gripper"}
+        return {"right": "AlohaGripper", "left": "AlohaGripper"}
+        # return {"right": "RethinkGripper", "left": "RethinkGripper"}
 
     @property
     def default_controller_config(self):
@@ -44,7 +42,7 @@ class PR2(ManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific default controller config names
         """
-        return {"right": "default_pr2", "left": "default_pr2"}
+        return {"right": "default_aloha", "left": "default_aloha"}
 
     @property
     def init_qpos(self):
@@ -58,33 +56,14 @@ class PR2(ManipulatorModel):
         """
         # [right, left]
         # Arms half extended
-        return np.array(
-            [
-                0,
-                0.565096,
-                -0.425,
-                -0.524,
-                -3.19,
-                -1.51,
-                0,
-                -0.545,
-                -0.534,
-                0.425,
-                -0.447,
-                3.05,
-                -1.57,
-                0.0,
-                -0.545,
-                -0.534,
-            ]
-        )
+        return np.array([0, -0.840225, 0.847975, -0.1571, 1.53683, 0, 0, -0.560595, 0.578455, 0.1571, 1.49582, 0])
 
     @property
     def base_xpos_offset(self):
         return {
             "bins": (-0.5, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.7 - table_length / 2, 0, 0),
+            "table": lambda table_length: (-0.26 - table_length / 2, 0, 0),
         }
 
     @property

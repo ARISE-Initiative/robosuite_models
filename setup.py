@@ -12,17 +12,17 @@ lines = [x for x in lines if ".png" not in x]
 long_description = "".join(lines)
 
 setup(
-    name="robosuite_menagerie",
-    packages=[package for package in find_packages() if package.startswith("robosuite_menagerie")],
+    name="robosuite_models",
+    packages=[package for package in find_packages() if package.startswith("robosuite_models")],
     install_requires=[
         "mujoco>=3.2.0",
     ],
     eager_resources=["*"],
     include_package_data=True,
     python_requires=">=3",
-    description="robosuite mengerie: collection of robot models for robosuite usage.",
+    description="robosuite models: collection of robot models for robosuite usage.",
     author="Yifeng Zhu",
-    url="https://github.com/ARISE-Initiative/robosuite_menagerie",
+    url="https://github.com/ARISE-Initiative/robosuite_models",
     author_email="yifeng.zhu@utexas.edu",
     version="1.0.0",
     long_description=long_description,

@@ -1,6 +1,6 @@
 from robosuite.robots import register_robot_class
 from robosuite.models.robots import *
-from robosuite_menagerie.robots import *
+from robosuite_models.robots import *
 
 @register_robot_class("WheeledRobot")
 class VX300SMobile(VX300S):

@@ -6,7 +6,7 @@ import numpy as np
 from robosuite.models.bases import register_base
 from robosuite.models.bases.mount_model import MountModel
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_base
 class AlohaMount(MountModel):
@@ -18,7 +18,7 @@ class AlohaMount(MountModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("mounts/aloha_mount.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("mounts/aloha_mount.xml"), idn=idn)
 
     @property
     def top_offset(self):

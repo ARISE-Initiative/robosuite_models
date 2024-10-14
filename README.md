@@ -1,4 +1,4 @@
-# robosuite_menagerie
+# robosuite_models
 A collection of robot models tailored to robosuite. 
 
 

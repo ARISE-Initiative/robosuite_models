@@ -27,12 +27,12 @@ import mujoco.viewer
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
 
-import robosuite_menagerie
+import robosuite_models
 
 """
 Here are two examples to define your own composition of robots. This is useful if you want to define robots in your own project codebase and do not mess up with the robosuite codebase. 
 
-For more examples, see robosuite_menagerie/robosuite/compositional.py
+For more examples, see robosuite_models/robosuite/compositional.py
 """
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):

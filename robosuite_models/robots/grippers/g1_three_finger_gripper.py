@@ -6,26 +6,26 @@ import numpy as np
 from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_gripper
-class AbilityLeftHand(GripperModel):
+class G1ThreeFingerLeftGripper(GripperModel):
     """
-    Dexterous left Ability hand.
+    Three-finger left gripper  of G1 robot
 
     Args:
         idn (int or str): Number or some other unique identification string for this gripper instance
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("grippers/ability_left_hand.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("grippers/g1_three_finger_left_gripper.xml"), idn=idn)
 
     def format_action(self, action):
-        return action
+        return action * np.array([0.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0])
 
     @property
     def init_qpos(self):
-        return np.array([0.8] * 10)
+        return np.array([0.0] * 7)
 
     @property
     def speed(self):
@@ -33,26 +33,26 @@ class AbilityLeftHand(GripperModel):
 
     @property
     def dof(self):
-        return 10
+        return 7
 
 @register_gripper
-class AbilityRightHand(GripperModel):
+class G1ThreeFingerRightGripper(GripperModel):
     """
-    Dexterous right Ability hand.
+    Three-finger right gripper of G1 robot
 
     Args:
         idn (int or str): Number or some other unique identification string for this gripper instance
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("grippers/ability_right_hand.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("grippers/g1_three_finger_right_gripper.xml"), idn=idn)
 
     def format_action(self, action):
-        return action
+        return action * np.array([0.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0])
 
     @property
     def init_qpos(self):
-        return np.array([0.8] * 10)
+        return np.array([0.0] * 7)
 
     @property
     def speed(self):
@@ -60,4 +60,4 @@ class AbilityRightHand(GripperModel):
 
     @property
     def dof(self):
-        return 10
+        return 7

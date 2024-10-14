@@ -4,25 +4,25 @@ from robosuite.models.robots.manipulators.manipulator_model import ManipulatorMo
 from robosuite.utils.mjcf_utils import xml_path_completion
 from robosuite.robots import register_robot_class
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
-@register_robot_class("FixedBaseRobot")
-class VX300S(ManipulatorModel):
+@register_robot_class("WheeledRobot")
+class PR2(ManipulatorModel):
     """
-    Baxter is a hunky bimanual robot designed by Rethink Robotics.
+    PR2 is the lengendary mobile manipulator robot that is no longer manufactured :(.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance
     """
 
-    arms = ["right"]
+    arms = ["right", "left"]
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("robots/vx300s/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/pr2/robot.xml"), idn=idn)
 
     @property
     def default_base(self):
-        return "RethinkMinimalMount"
+        return "NullMobileBase"
 
     @property
     def default_gripper(self):
@@ -33,8 +33,7 @@ class VX300S(ManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific gripper names
         """
-        return {"right": "AlohaGripper"}
-        # return {"right": "RethinkGripper", "left": "RethinkGripper"}
+        return {"right": "PR2Gripper", "left": "PR2Gripper"}
 
     @property
     def default_controller_config(self):
@@ -45,7 +44,7 @@ class VX300S(ManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific default controller config names
         """
-        return {"right": "default_aloha"}
+        return {"right": "default_pr2", "left": "default_pr2"}
 
     @property
     def init_qpos(self):
@@ -59,14 +58,33 @@ class VX300S(ManipulatorModel):
         """
         # [right, left]
         # Arms half extended
-        return np.array([0, -0.840225, 0.847975, -0.1571, 1.53683, 0])
+        return np.array(
+            [
+                0,
+                0.565096,
+                -0.425,
+                -0.524,
+                -3.19,
+                -1.51,
+                0,
+                -0.545,
+                -0.534,
+                0.425,
+                -0.447,
+                3.05,
+                -1.57,
+                0.0,
+                -0.545,
+                -0.534,
+            ]
+        )
 
     @property
     def base_xpos_offset(self):
         return {
-            "bins": (0.0, -0.1, 0),
+            "bins": (-0.5, -0.1, 0),
             "empty": (-0.29, 0, 0),
-            "table": lambda table_length: (-0.18 - table_length / 2, 0, 0),
+            "table": lambda table_length: (-0.7 - table_length / 2, 0, 0),
         }
 
     @property
@@ -79,7 +97,7 @@ class VX300S(ManipulatorModel):
 
     @property
     def arm_type(self):
-        return "single"
+        return "bimanual"
 
     @property
     def _eef_name(self):
@@ -90,4 +108,4 @@ class VX300S(ManipulatorModel):
         Returns:
             dict: Dictionary containing arm-specific eef names
         """
-        return {"right": "right_hand"}
+        return {"right": "right_hand", "left": "left_hand"}

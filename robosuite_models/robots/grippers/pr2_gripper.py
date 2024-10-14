@@ -6,7 +6,7 @@ import numpy as np
 from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_gripper
 class PR2Gripper(GripperModel):
@@ -18,7 +18,7 @@ class PR2Gripper(GripperModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("grippers/pr2_gripper.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("grippers/pr2_gripper.xml"), idn=idn)
 
     def format_action(self, action):
         return action

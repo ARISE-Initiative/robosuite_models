@@ -4,7 +4,7 @@ from robosuite.models.robots.manipulators.manipulator_model import ManipulatorMo
 from robosuite.utils.mjcf_utils import xml_path_completion
 from robosuite.robots import register_robot_class
 
-from robosuite_menagerie import menagerie_path_completion
+from robosuite_models import robosuite_model_path_completion
 
 @register_robot_class("FixedBaseRobot")
 class Yumi(ManipulatorModel):
@@ -18,7 +18,7 @@ class Yumi(ManipulatorModel):
     arms = ["right", "left"]
 
     def __init__(self, idn=0):
-        super().__init__(menagerie_path_completion("robots/yumi/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/yumi/robot.xml"), idn=idn)
 
     @property
     def default_base(self):
