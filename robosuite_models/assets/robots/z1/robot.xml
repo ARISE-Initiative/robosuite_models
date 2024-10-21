@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <mujoco model="z1">
+  <option cone="elliptic" impratio="100"/>
+	<compiler angle="radian" autolimits="true"/>
   <actuator>
     <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="joint1" name="torq_j1"/>
     <motor ctrllimited="true" ctrlrange="-80.0 80.0" joint="joint2" name="torq_j2"/>

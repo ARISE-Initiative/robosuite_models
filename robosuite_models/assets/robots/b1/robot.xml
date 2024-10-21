@@ -14,7 +14,7 @@
     <default class="abduction">
       <geom friction="0.6" margin="0.001"/>
       <!-- <joint axis="1 0 0" damping="0" range="-0.75 0.75" armature="0.01" frictionloss="0." limited="true"/> -->
-      <joint axis="1 0 0" damping="100" range="-0.75 0.75" armature="0.01" frictionloss="0.2" limited="true"/>
+      <joint axis="1 0 0" damping="2" range="-0.75 0.75" armature="0.01" frictionloss="0.2" limited="true"/>
       <motor ctrlrange="-33.5 33.5" ctrllimited="true"/>
     </default>
     <default class="hip">
@@ -51,7 +51,7 @@
       <motor forcerange="-33.5 33.5"/>
     </default>
     <default class="calf1">
-      <geom size="0.02 0.015 0.08" fromto="0.0 0 0 0.03 0 -0.35" group="0" type="box"/>      
+      <geom size="0.02 0.015 0.08" fromto="0.0 0 0 0.03 0 -0.34" group="0" type="box"/>      
       <!-- <geom size="0.01" fromto="0 0 0 0.02 0 -0.13" group="0" type="capsule"/> -->
       <joint axis="0 1 0" damping="2" armature="0.01" frictionloss="0.2"/>
       <motor forcerange="-33.5 33.5"/>
@@ -115,7 +115,7 @@
               <geom class="visual" mesh="calf"/>
               <geom class="calf1"/>
             <body name="FR_foot" pos="0 0 -0.35">
-                    <geom class="foot"/>
+                    <geom name="FR" class="foot"/>
             </body>
             </body>
           </body>
@@ -148,7 +148,7 @@
               <geom class="visual" mesh="calf"/>
               <geom class="calf1"/>
               <body name="FL_foot" pos="0 0 -0.35">
-                      <geom class="foot"/>
+                      <geom name="FL" class="foot"/>
               </body>
             </body>
           </body>
@@ -181,7 +181,7 @@
               <geom class="visual" mesh="calf"/>
               <geom class="calf1"/>
               <body name="RR_foot" pos="0 0 -0.35">
-                      <geom class="foot"/>
+                      <geom name="RR" class="foot"/>
               </body>
             </body>
           </body>
@@ -213,7 +213,7 @@
               <geom class="visual" mesh="calf"/>
               <geom class="calf1"/>
               <body name="RL_foot" pos="0 0 -0.35">
-                      <geom class="foot"/>
+                      <geom name="RL" class="foot"/>
               </body>
             </body>
           </body>

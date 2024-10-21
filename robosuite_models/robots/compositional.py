@@ -161,3 +161,29 @@ class GR1SchunkSVHFixedLowerBody(GR1FixedLowerBody):
             dict: Dictionary containing arm-specific gripper names
         """
         return {"right": "SchunkSvhRightHand", "left": "SchunkSvhLeftHand"}
+
+@register_robot_class("WheeledRobot")
+class PandaDexRHOmron(PandaDexRH):
+    @property
+    def default_base(self):
+        return "OmronMobileBase"
+
+@register_robot_class("FixedBaseRobot")
+class UR5eDexRH(UR5e):
+    @property
+    def default_gripper(self):
+        return {"right": "InspireRightHand"}
+
+    @property
+    def gripper_mount_pos_offset(self):
+        return {"right": [0., 0., 0.]}
+
+    @property
+    def gripper_mount_quat_offset(self):
+        return {"right": [0.5, -0.5, 0.5, 0.5]}
+
+@register_robot_class("WheeledRobot")
+class UR5eDexRHOmron(UR5eDexRH):
+    @property
+    def default_base(self):
+        return "OmronMobileBase"
