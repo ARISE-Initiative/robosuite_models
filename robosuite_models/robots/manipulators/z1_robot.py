@@ -9,7 +9,7 @@ from robosuite_models import robosuite_model_path_completion
 @register_robot_class("FixedBaseRobot")
 class Z1(ManipulatorModel):
     """
-    Panda is a sensitive single-arm robot designed by Franka.
+    Z1 is Unitree arm that is commonly mounted for B1 robot.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance

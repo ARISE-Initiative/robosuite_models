@@ -9,7 +9,7 @@ from robosuite_models import robosuite_model_path_completion
 @register_robot_class("FixedBaseRobot")
 class VX300S(ManipulatorModel):
     """
-    Baxter is a hunky bimanual robot designed by Rethink Robotics.
+    VX300S is a single tabletop arm that is the unit for Aloha robot.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance

@@ -8,7 +8,7 @@ from robosuite_models import robosuite_model_path_completion
 @register_robot_class("FixedBaseRobot")
 class Aloha(ManipulatorModel):
     """
-    Baxter is a hunky bimanual robot designed by Rethink Robotics.
+    Aloha Robot is a bimanual robot with two arms that is designed for puppeting teleoperation.
 
     Args:
         idn (int or str): Number or some other unique identification string for this robot instance

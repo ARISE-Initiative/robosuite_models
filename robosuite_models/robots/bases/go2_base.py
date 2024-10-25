@@ -8,7 +8,7 @@ from robosuite_models import robosuite_model_path_completion
 @register_base
 class Go2(LegBaseModel):
     """
-    Rethink's Generic Mount (Officially used on Baxter).
+    Go2 Base Class.
 
     Args:
         idn (int or str): Number or some other unique identification string for this mount instance
@@ -29,17 +29,17 @@ class Go2(LegBaseModel):
     def init_qpos(self):
         return np.array([0.0, 0.9, -1.8] * 4)
 
-
+@register_base
 class Go2Floating(LegBaseModel):
     """
-    Rethink's Generic Mount (Officially used on Baxter).
+    Variant of Go2 robot with floating base.
 
     Args:
         idn (int or str): Number or some other unique identification string for this mount instance
     """
 
     def __init__(self, idn=0):
-        super().__init__(xml_path_completion("robots/go2/robot.xml"), idn=idn)
+        super().__init__(robosuite_model_path_completion("robots/go2/robot.xml"), idn=idn)
 
         self._remove_joint_actuation("leg")
         self._remove_free_joint()
@@ -56,4 +56,4 @@ class Go2Floating(LegBaseModel):
 
     @property
     def init_qpos(self):
-        return np.array([0.0, 0.9, -1.8] * 4)
+        return np.array([])

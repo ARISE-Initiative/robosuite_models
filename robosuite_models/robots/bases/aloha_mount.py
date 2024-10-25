@@ -11,7 +11,7 @@ from robosuite_models import robosuite_model_path_completion
 @register_base
 class AlohaMount(MountModel):
     """
-    Mount officially used for Rethink's Baxter Robot. Includes only a wheeled pedestal.
+    Aloha Mount Class.
 
     Args:
         idn (int or str): Number or some other unique identification string for this mount instance

@@ -39,14 +39,23 @@ class B1Z1(Z1):
         }
 
 @register_robot_class("LeggedRobot")
-class B1Z1Floating(B1Z1):
+class B1Z1Floating(Z1):
     """
-    Variant of VX300S robot with mobile base. Currently serves as placeholder class.
+    Variant of B1Z1 robot with floating base. Currently serves as placeholder class.
     """
 
     @property
     def default_base(self):
-        return "FloatingLeggedBase"
+        return "B1Floating"
+
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.8, -0.1, 0.8),
+            "empty": (-0.8, 0, 0.8),
+            "table": lambda table_length: (-0.55 - table_length / 2, 0.0, 0.8),
+        }
+
 
 @register_robot_class("LeggedRobot")
 class Go2Arx5(Arx5):
@@ -57,6 +66,28 @@ class Go2Arx5(Arx5):
     @property
     def default_base(self):
         return "Go2"
+
+    @property
+    def default_arms(self):
+        return {"right": "Arx5"}
+
+    @property
+    def base_xpos_offset(self):
+        return {
+            "bins": (-0.55, 0, 0.9),
+            "empty": (-0.6, 0, 0.9),
+            "table": lambda table_length: (-0.55 - table_length / 2, 0.0, 0.9),
+        }
+
+@register_robot_class("LeggedRobot")
+class Go2Arx5Floating(Arx5):
+    """
+    Go2 robot with Arx5 arm mounted on it.
+    """
+
+    @property
+    def default_base(self):
+        return "Go2Floating"
 
     @property
     def default_arms(self):

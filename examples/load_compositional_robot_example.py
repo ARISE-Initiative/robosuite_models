@@ -122,7 +122,7 @@ if __name__ == "__main__":
     )
 
     env.reset()
-    env.step(np.zeros(env.robots[0].action_dim))
+    env.step(np.zeros(sum([robot.action_dim for robot in env.robots])))
 
     m = env.sim.model._model
     d = env.sim.data._data
