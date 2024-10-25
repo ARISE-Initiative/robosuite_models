@@ -1,5 +1,4 @@
 from robosuite.models.bases.mount_model import MountModel
-from robosuite.models.bases.base_factory import base_factory
 from robosuite.models.bases.mobile_base_model import MobileBaseModel
 from robosuite.models.bases.leg_base_model import LegBaseModel
 
