@@ -1,3 +1,22 @@
+[project]
+name = "robosuite_models"
+version = "1.0.0"
+authors = [
+  { name="robosuite core team members", email="" },
+]
+description = "A collection of robot models for robosuite simulation."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/ARISE-Initiative/robosuite_models"
+Issues = "https://github.com/ARISE-Initiative/robosuite_models/issues"
+
 [tool.black]
 line-length = 120
 target-version = ["py36", "py37", "py38", "py39", "py310"]
