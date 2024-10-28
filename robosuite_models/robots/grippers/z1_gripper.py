@@ -1,9 +1,9 @@
 import numpy as np
-
 from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_gripper
 class Z1Gripper(GripperModel):

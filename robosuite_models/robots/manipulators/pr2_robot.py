@@ -1,10 +1,10 @@
 import numpy as np
-
 from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
-from robosuite.utils.mjcf_utils import xml_path_completion
 from robosuite.robots import register_robot_class
+from robosuite.utils.mjcf_utils import xml_path_completion
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_robot_class("WheeledRobot")
 class PR2(ManipulatorModel):
@@ -58,26 +58,7 @@ class PR2(ManipulatorModel):
         """
         # [right, left]
         # Arms half extended
-        return np.array(
-            [
-                0.0,
-                0,
-                0,
-                0,
-                0,
-                -1,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                -1,
-                0,
-                0,
-                0
-            ]
-        )
+        return np.array([0.0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0])
 
     @property
     def base_xpos_offset(self):

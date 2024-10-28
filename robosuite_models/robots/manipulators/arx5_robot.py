@@ -1,9 +1,9 @@
 import numpy as np
-
 from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
 from robosuite.robots import register_robot_class
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_robot_class("FixedBaseRobot")
 class Arx5(ManipulatorModel):

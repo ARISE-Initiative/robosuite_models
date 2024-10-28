@@ -1,10 +1,10 @@
 import numpy as np
-
 from robosuite.models.robots.manipulators.manipulator_model import ManipulatorModel
-from robosuite.utils.mjcf_utils import xml_path_completion
 from robosuite.robots import register_robot_class
+from robosuite.utils.mjcf_utils import xml_path_completion
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_robot_class("FixedBaseRobot")
 class Yumi(ManipulatorModel):

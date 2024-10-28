@@ -1,10 +1,10 @@
 import numpy as np
-
 from robosuite.models.robots.manipulators.legged_manipulator_model import LeggedManipulatorModel
-from robosuite.utils.mjcf_utils import find_parent, xml_path_completion
 from robosuite.robots import register_robot_class
+from robosuite.utils.mjcf_utils import find_parent, xml_path_completion
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_robot_class("LeggedRobot")
 class H1(LeggedManipulatorModel):
@@ -90,6 +90,7 @@ class H1(LeggedManipulatorModel):
         """
         return {"right": "right_hand", "left": "left_hand"}
 
+
 @register_robot_class("LeggedRobot")
 class H1FixedLowerBody(H1):
     def __init__(self, idn=0):
@@ -115,7 +116,7 @@ class H1FixedLowerBody(H1):
     @property
     def default_base(self):
         return "NoActuationBase"
-    
+
     @property
     def base_xpos_offset(self):
         return {
@@ -123,6 +124,7 @@ class H1FixedLowerBody(H1):
             "empty": (-0.29, 0, -0.05),
             "table": lambda table_length: (-0.26 - table_length / 2, 0, -0.05),
         }
+
 
 @register_robot_class("LeggedRobot")
 class H1FloatingBody(H1):
@@ -149,7 +151,7 @@ class H1FloatingBody(H1):
     @property
     def default_base(self):
         return "FloatingLeggedBase"
-    
+
     @property
     def base_xpos_offset(self):
         return {
@@ -157,7 +159,7 @@ class H1FloatingBody(H1):
             "empty": (-0.29, 0, -0.05),
             "table": lambda table_length: (-0.26 - table_length / 2, 0, -0.05),
         }
-    
+
 
 @register_robot_class("LeggedRobot")
 class H1ArmsOnly(H1):
@@ -182,7 +184,7 @@ class H1ArmsOnly(H1):
         """
         init_qpos = np.array([0.0] * 8)
         return init_qpos
-    
+
     @property
     def base_xpos_offset(self):
         return {

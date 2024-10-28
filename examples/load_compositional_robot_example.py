@@ -13,19 +13,16 @@ import time
 from glob import glob
 
 import h5py
+import mujoco
+import mujoco.viewer
 import numpy as np
-
 import robosuite as suite
 import robosuite.macros as macros
 from robosuite.controllers import load_composite_controller_config
-from robosuite.utils.input_utils import input2action
-from robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
-
-import mujoco
-import mujoco.viewer
-
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
+from robosuite.utils.input_utils import input2action
+from robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
 
 import robosuite_models
 
@@ -34,6 +31,8 @@ Here are two examples to define your own composition of robots. This is useful i
 
 For more examples, see robosuite_models/robosuite/compositional.py
 """
+
+
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):
     """
@@ -47,6 +46,7 @@ class UR5eOmron(UR5e):
     @property
     def default_arms(self):
         return {"right": "UR5e"}
+
 
 @register_robot_class("LeggedRobot")
 class GR1SchunkSVHFloatingBody(GR1FloatingBody):
@@ -64,6 +64,7 @@ class GR1SchunkSVHFloatingBody(GR1FloatingBody):
             dict: Dictionary containing arm-specific gripper names
         """
         return {"right": "SchunkSvhRightHand", "left": "SchunkSvhLeftHand"}
+
 
 if __name__ == "__main__":
     # Arguments
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    # Get controller config        
+    # Get controller config
     composite_controller_config = load_composite_controller_config(controller=args.controller, robot=args.robots[0])
 
     # Create argument configuration

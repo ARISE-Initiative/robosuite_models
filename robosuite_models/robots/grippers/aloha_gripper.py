@@ -2,11 +2,11 @@
 Gripper with two fingers for Rethink Robots.
 """
 import numpy as np
-
 from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_gripper
 class AlohaGripperBase(GripperModel):
@@ -35,6 +35,7 @@ class AlohaGripperBase(GripperModel):
             "left_fingerpad": ["left_finger_g4"],
             "right_fingerpad": ["right_finger_g4"],
         }
+
 
 @register_gripper
 class AlohaGripper(AlohaGripperBase):

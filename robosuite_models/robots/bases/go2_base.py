@@ -1,9 +1,9 @@
 import numpy as np
-
 from robosuite.models.bases import register_base
 from robosuite.models.bases.leg_base_model import LegBaseModel
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_base
 class Go2(LegBaseModel):
@@ -28,6 +28,7 @@ class Go2(LegBaseModel):
     @property
     def init_qpos(self):
         return np.array([0.0, 0.9, -1.8] * 4)
+
 
 @register_base
 class Go2Floating(LegBaseModel):

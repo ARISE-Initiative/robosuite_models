@@ -2,11 +2,11 @@
 Dexterous hands for GR1 robot.
 """
 import numpy as np
-
 from robosuite.models.grippers import register_gripper
 from robosuite.models.grippers.gripper_model import GripperModel
 
 from robosuite_models import robosuite_model_path_completion
+
 
 @register_gripper
 class YumiRightGripper(GripperModel):
@@ -37,6 +37,7 @@ class YumiRightGripper(GripperModel):
     @property
     def dof(self):
         return 1
+
 
 @register_gripper
 class YumiLeftGripper(GripperModel):

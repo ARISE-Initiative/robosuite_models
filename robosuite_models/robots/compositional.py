@@ -1,6 +1,8 @@
-from robosuite.robots import register_robot_class
 from robosuite.models.robots import *
+from robosuite.robots import register_robot_class
+
 from robosuite_models.robots import *
+
 
 @register_robot_class("WheeledRobot")
 class VX300SMobile(VX300S):
@@ -15,6 +17,7 @@ class VX300SMobile(VX300S):
     @property
     def default_arms(self):
         return {"right": "VX300S"}
+
 
 @register_robot_class("LeggedRobot")
 class B1Z1(Z1):
@@ -37,6 +40,7 @@ class B1Z1(Z1):
             "empty": (-0.8, 0, 0.65),
             "table": lambda table_length: (-0.55 - table_length / 2, 0.0, 0.65),
         }
+
 
 @register_robot_class("LeggedRobot")
 class B1Z1Floating(Z1):
@@ -79,6 +83,7 @@ class Go2Arx5(Arx5):
             "table": lambda table_length: (-0.55 - table_length / 2, 0.0, 0.9),
         }
 
+
 @register_robot_class("LeggedRobot")
 class Go2Arx5Floating(Arx5):
     """
@@ -101,6 +106,7 @@ class Go2Arx5Floating(Arx5):
             "table": lambda table_length: (-0.55 - table_length / 2, 0.0, 0.9),
         }
 
+
 @register_robot_class("WheeledRobot")
 class UR5eOmron(UR5e):
     """
@@ -114,7 +120,8 @@ class UR5eOmron(UR5e):
     @property
     def default_arms(self):
         return {"right": "UR5e"}
-    
+
+
 @register_robot_class("WheeledRobot")
 class Kinova3Omron(Kinova3):
     """
@@ -128,7 +135,7 @@ class Kinova3Omron(Kinova3):
     @property
     def default_arms(self):
         return {"right": "Kinova3"}
-    
+
     @property
     def base_xpos_offset(self):
         return {
@@ -136,6 +143,7 @@ class Kinova3Omron(Kinova3):
             "empty": (-0.6, 0, 0),
             "table": lambda table_length: (-0.16 - table_length / 2, 0, 0),
         }
+
 
 @register_robot_class("WheeledRobot")
 class SawyerOmron(Sawyer):
@@ -150,7 +158,7 @@ class SawyerOmron(Sawyer):
     @property
     def default_arms(self):
         return {"right": "Sawyer"}
-    
+
     @property
     def base_xpos_offset(self):
         return {
@@ -158,7 +166,8 @@ class SawyerOmron(Sawyer):
             "empty": (-0.6, 0, 0),
             "table": lambda table_length: (-0.16 - table_length / 2, 0, 0),
         }
-    
+
+
 @register_robot_class("LeggedRobot")
 class GR1SchunkSVHArmsOnly(GR1ArmsOnly):
     """
@@ -175,6 +184,7 @@ class GR1SchunkSVHArmsOnly(GR1ArmsOnly):
             dict: Dictionary containing arm-specific gripper names
         """
         return {"right": "SchunkSvhRightHand", "left": "SchunkSvhLeftHand"}
+
 
 @register_robot_class("LeggedRobot")
 class GR1SchunkSVHFixedLowerBody(GR1FixedLowerBody):
@@ -193,11 +203,13 @@ class GR1SchunkSVHFixedLowerBody(GR1FixedLowerBody):
         """
         return {"right": "SchunkSvhRightHand", "left": "SchunkSvhLeftHand"}
 
+
 @register_robot_class("WheeledRobot")
 class PandaDexRHOmron(PandaDexRH):
     @property
     def default_base(self):
         return "OmronMobileBase"
+
 
 @register_robot_class("FixedBaseRobot")
 class UR5eDexRH(UR5e):
@@ -207,11 +219,12 @@ class UR5eDexRH(UR5e):
 
     @property
     def gripper_mount_pos_offset(self):
-        return {"right": [0., 0., 0.]}
+        return {"right": [0.0, 0.0, 0.0]}
 
     @property
     def gripper_mount_quat_offset(self):
         return {"right": [0.5, -0.5, 0.5, 0.5]}
+
 
 @register_robot_class("WheeledRobot")
 class UR5eDexRHOmron(UR5eDexRH):
