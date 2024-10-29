@@ -61,7 +61,9 @@ if __name__ == "__main__":
         default=os.path.join(suite.models.assets_root, "demonstrations"),
     )
     parser.add_argument("--environment", type=str, default="Lift")
-    parser.add_argument("--robots", nargs="+", type=str, default="PandaDexRHOmron", help="Which robot(s) to use in the env")
+    parser.add_argument(
+        "--robots", nargs="+", type=str, default="PandaDexRHOmron", help="Which robot(s) to use in the env"
+    )
     parser.add_argument(
         "--config", type=str, default="single-arm-opposed", help="Specified environment configuration if necessary"
     )

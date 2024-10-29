@@ -1,6 +1,6 @@
+from robosuite.models.robots import GR1ArmsOnly, GR1FixedLowerBody, Kinova3, PandaDexRH, Sawyer, UR5e
 from robosuite.robots import register_robot_class
 
-from robosuite.models.robots import UR5e, Kinova3, Sawyer, GR1ArmsOnly, GR1FixedLowerBody, PandaDexRH
 from robosuite_models.robots import *
 
 
