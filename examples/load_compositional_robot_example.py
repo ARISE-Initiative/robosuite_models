@@ -21,8 +21,6 @@ import robosuite.macros as macros
 from robosuite.controllers import load_composite_controller_config
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
-from robosuite.utils.input_utils import input2action
-from robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
 
 import robosuite_models
 
@@ -82,7 +80,7 @@ if __name__ == "__main__":
     parser.add_argument("--arm", type=str, default="right", help="Which arm to control (eg bimanual) 'right' or 'left'")
     parser.add_argument("--camera", type=str, default="agentview", help="Which camera to use for collecting demos")
     parser.add_argument(
-        "--controller", type=str, default=None, help="Choice of composite controller. Can be 'NONE' or 'WHOLE_BODY_IK'"
+        "--controller", type=str, default=None, help="Choice of composite controller. e.g. 'BASIC', 'WHOLE_BODY_IK'"
     )
     parser.add_argument("--device", type=str, default="keyboard")
     parser.add_argument("--pos-sensitivity", type=float, default=1.0, help="How much to scale position user inputs")
@@ -90,7 +88,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--renderer",
         type=str,
-        default="mujoco",
+        default="mjviewer",
         help="Use the Nvisii viewer (Nvisii), OpenCV viewer (mujoco), or Mujoco's builtin interactive viewer (mjviewer)",
     )
     args = parser.parse_args()
