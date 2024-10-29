@@ -6,14 +6,11 @@ and do not mess up with the robosuite codebase.
 For more examples, see robosuite_models/robosuite/compositional.py
 """
 import argparse
-import os
-from glob import glob
 
 import mujoco
 import mujoco.viewer
 import numpy as np
 import robosuite as suite
-import robosuite.macros as macros
 from robosuite.controllers import load_composite_controller_config
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
@@ -55,11 +52,6 @@ class GR1SchunkSVHFloatingBody(GR1FloatingBody):
 if __name__ == "__main__":
     # Arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--directory",
-        type=str,
-        default=os.path.join(suite.models.assets_root, "demonstrations"),
-    )
     parser.add_argument("--environment", type=str, default="Lift")
     parser.add_argument(
         "--robots", nargs="+", type=str, default="PandaDexRHOmron", help="Which robot(s) to use in the env"
@@ -73,8 +65,6 @@ if __name__ == "__main__":
         "--controller", type=str, default=None, help="Choice of composite controller. e.g. 'BASIC', 'WHOLE_BODY_IK'"
     )
     parser.add_argument("--device", type=str, default="keyboard")
-    parser.add_argument("--pos-sensitivity", type=float, default=1.0, help="How much to scale position user inputs")
-    parser.add_argument("--rot-sensitivity", type=float, default=1.0, help="How much to scale rotation user inputs")
     parser.add_argument(
         "--renderer",
         type=str,

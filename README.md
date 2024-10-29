@@ -1,9 +1,16 @@
 # robosuite_models
+
 A collection of robot models tailored to robosuite. 
 
-This repository also serves as an example module of how to create a custom composable robot model with [robosuite](https://github.com/ARISE-Initiative/robosuite).
+This repository also provide examples of how to create a custom composable robot model with [robosuite](https://github.com/ARISE-Initiative/robosuite).
 
 See [compositional.py](robosuite_models/robots/compositional.py): how to compose a new robot model.
+
+| Robot Model | Names |
+| --- | --- |
+| `RobotBaseModel` | aloha_mount, b1_base, go2_base |
+| `GripperModel` | ability_hands, aloha_gripper, g1_three_finger_gripper, pr2_gripper, schunk_svh_hands, umi_gripper, yumi_gripper, z1_gripper |
+| `ManipulatorModel` | aloha_robot, arx5_robot, g1_robot, h1_robot, pr2_robot, vx330s_robot, yumi_robot, z1_robot |
 
 Example code:
 
@@ -48,3 +55,7 @@ To load a robot model to see what it looks like, you can use the following comma
 ```sh
 python examples/load_compositional_robot_example.py --robots UR5eOmron  --controller BASIC
 ```
+
+## Contributing
+
+Run `pre-commit run --all-files` before open a pull request.
