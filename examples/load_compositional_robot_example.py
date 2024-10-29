@@ -1,18 +1,14 @@
 """
-A script to collect a batch of human demonstrations.
+Here are two examples to define your own composition of robots. 
+This is useful if you want to define robots in your own project codebase 
+and do not mess up with the robosuite codebase. 
 
-The demonstrations can be played back using the `playback_demonstrations_from_hdf5.py` script.
+For more examples, see robosuite_models/robosuite/compositional.py
 """
-
 import argparse
-import datetime
-import json
 import os
-import shutil
-import time
 from glob import glob
 
-import h5py
 import mujoco
 import mujoco.viewer
 import numpy as np
@@ -21,14 +17,6 @@ import robosuite.macros as macros
 from robosuite.controllers import load_composite_controller_config
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
-
-import robosuite_models
-
-"""
-Here are two examples to define your own composition of robots. This is useful if you want to define robots in your own project codebase and do not mess up with the robosuite codebase. 
-
-For more examples, see robosuite_models/robosuite/compositional.py
-"""
 
 
 @register_robot_class("WheeledRobot")
@@ -73,7 +61,7 @@ if __name__ == "__main__":
         default=os.path.join(suite.models.assets_root, "demonstrations"),
     )
     parser.add_argument("--environment", type=str, default="Lift")
-    parser.add_argument("--robots", nargs="+", type=str, default="Panda", help="Which robot(s) to use in the env")
+    parser.add_argument("--robots", nargs="+", type=str, default="PandaDexRHOmron", help="Which robot(s) to use in the env")
     parser.add_argument(
         "--config", type=str, default="single-arm-opposed", help="Specified environment configuration if necessary"
     )

@@ -3,8 +3,9 @@ A collection of robot models tailored to robosuite.
 
 This repository also serves as an example module of how to create a custom composable robot model with [robosuite](https://github.com/ARISE-Initiative/robosuite).
 
-Example code: (see [here](robosuite_models/robots/compositional.py))
+See [compositional.py](robosuite_models/robots/compositional.py): how to compose a new robot model.
 
+Example code:
 
 ```py
 from robosuite.robots import register_robot_class
