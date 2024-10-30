@@ -2,7 +2,7 @@
 name = "robosuite_models"
 version = "1.0.0"
 authors = [
-  { name="robosuite core team members", email="" },
+  { name="robosuite core team members", email="yifeng.zhu@utexas.edu" },
 ]
 description = "A collection of robot models for robosuite simulation."
 readme = "README.md"

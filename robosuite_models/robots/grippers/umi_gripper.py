@@ -23,7 +23,7 @@ class UMIGripper(GripperModel):
 
     @property
     def init_qpos(self):
-        return np.array([-1.57])
+        return np.array([-1.57, -1.57])
 
     @property
     def speed(self):
