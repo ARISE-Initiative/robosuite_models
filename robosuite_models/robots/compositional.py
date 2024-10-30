@@ -1,4 +1,4 @@
-from robosuite.models.robots import *
+from robosuite.models.robots import GR1ArmsOnly, GR1FixedLowerBody, Kinova3, PandaDexRH, Sawyer, UR5e
 from robosuite.robots import register_robot_class
 
 from robosuite_models.robots import *
@@ -210,6 +210,10 @@ class PandaDexRHOmron(PandaDexRH):
     def default_base(self):
         return "OmronMobileBase"
 
+    @property
+    def default_arms(self):
+        return {"right": "Panda"}
+
 
 @register_robot_class("FixedBaseRobot")
 class UR5eDexRH(UR5e):
@@ -224,6 +228,10 @@ class UR5eDexRH(UR5e):
     @property
     def gripper_mount_quat_offset(self):
         return {"right": [0.5, -0.5, 0.5, 0.5]}
+
+    @property
+    def default_arm(self):
+        return {"right": "UR5e"}
 
 
 @register_robot_class("WheeledRobot")

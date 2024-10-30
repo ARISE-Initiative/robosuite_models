@@ -1,36 +1,19 @@
 """
-A script to collect a batch of human demonstrations.
+Here are two examples to define your own composition of robots. 
+This is useful if you want to define robots in your own project codebase 
+and do not mess up with the robosuite codebase. 
 
-The demonstrations can be played back using the `playback_demonstrations_from_hdf5.py` script.
+For more examples, see robosuite_models/robosuite/compositional.py
 """
-
 import argparse
-import datetime
-import json
-import os
-import shutil
-import time
-from glob import glob
 
-import h5py
 import mujoco
 import mujoco.viewer
 import numpy as np
 import robosuite as suite
-import robosuite.macros as macros
 from robosuite.controllers import load_composite_controller_config
 from robosuite.models.robots import *
 from robosuite.robots import register_robot_class
-from robosuite.utils.input_utils import input2action
-from robosuite.wrappers import DataCollectionWrapper, VisualizationWrapper
-
-import robosuite_models
-
-"""
-Here are two examples to define your own composition of robots. This is useful if you want to define robots in your own project codebase and do not mess up with the robosuite codebase. 
-
-For more examples, see robosuite_models/robosuite/compositional.py
-"""
 
 
 @register_robot_class("WheeledRobot")
@@ -69,28 +52,23 @@ class GR1SchunkSVHFloatingBody(GR1FloatingBody):
 if __name__ == "__main__":
     # Arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--directory",
-        type=str,
-        default=os.path.join(suite.models.assets_root, "demonstrations"),
-    )
     parser.add_argument("--environment", type=str, default="Lift")
-    parser.add_argument("--robots", nargs="+", type=str, default="Panda", help="Which robot(s) to use in the env")
+    parser.add_argument(
+        "--robots", nargs="+", type=str, default="PandaDexRHOmron", help="Which robot(s) to use in the env"
+    )
     parser.add_argument(
         "--config", type=str, default="single-arm-opposed", help="Specified environment configuration if necessary"
     )
     parser.add_argument("--arm", type=str, default="right", help="Which arm to control (eg bimanual) 'right' or 'left'")
     parser.add_argument("--camera", type=str, default="agentview", help="Which camera to use for collecting demos")
     parser.add_argument(
-        "--controller", type=str, default=None, help="Choice of composite controller. Can be 'NONE' or 'WHOLE_BODY_IK'"
+        "--controller", type=str, default=None, help="Choice of composite controller. e.g. 'BASIC', 'WHOLE_BODY_IK'"
     )
     parser.add_argument("--device", type=str, default="keyboard")
-    parser.add_argument("--pos-sensitivity", type=float, default=1.0, help="How much to scale position user inputs")
-    parser.add_argument("--rot-sensitivity", type=float, default=1.0, help="How much to scale rotation user inputs")
     parser.add_argument(
         "--renderer",
         type=str,
-        default="mujoco",
+        default="mjviewer",
         help="Use the Nvisii viewer (Nvisii), OpenCV viewer (mujoco), or Mujoco's builtin interactive viewer (mjviewer)",
     )
     args = parser.parse_args()
